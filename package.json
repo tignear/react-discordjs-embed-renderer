@@ -1,6 +1,6 @@
 {
-  "name": "react-discordjs-embed-renderer",
-  "version": "1.0.0",
+  "name": "@tignear/react-discordjs-embed-renderer",
+  "version": "1.0.0-rc1",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -34,6 +34,9 @@
     "test:lint": "eslint --ext ts src",
     "doc": "rm -rf docs & typedoc --exclude **/examples/*.tsx --sourcefile-url-map sourcefile-map.json",
     "example_basic": "node dist/examples/basic.js",
-    "install": "yarn build"
-  }
+    "prepublish": "yarn build&yarn doc"
+  },
+  "files": [
+    "dist","docs"
+  ]
 }
