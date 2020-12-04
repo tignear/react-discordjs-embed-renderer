@@ -1,6 +1,6 @@
 {
   "name": "@tignear/react-discordjs-embed-renderer",
-  "version": "1.0.0-rc2",
+  "version": "1.0.0-rc3",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -39,5 +39,12 @@
   "files": [
     "dist",
     "docs"
-  ]
+  ],
+  "types": "dist",
+  "bugs": {
+    "url": "https://github.com/tignear/react-discordjs-embed-renderer/issues"
+  },
+  "repository": {
+    "url": "https://github.com/tignear/react-discordjs-embed-renderer"
+  }
 }
