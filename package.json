@@ -1,0 +1,38 @@
+{
+  "name": "react-discordjs-embed-renderer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^14.14.9",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-reconciler": "^0.18.0",
+    "@types/ws": "^7.4.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5",
+    "typedoc": "^0.19.2",
+    "typedoc-plugin-external-module-name": "^4.0.3",
+    "typedoc-plugin-internal-external": "^2.2.0",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "abort-controller": "^3.0.0",
+    "discord.js": "^12.5.0",
+    "react": "^17.0.1",
+    "react-reconciler": "0.26.1"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "lint": "eslint --ext ts src --fix",
+    "test:lint": "eslint --ext ts src",
+    "doc": "typedoc --exclude **/examples/*.tsx",
+    "example_basic": "node dist/examples/basic.js",
+    "install": "yarn build"
+  }
+}

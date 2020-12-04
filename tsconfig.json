@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "types": [
+      "node", "discord.js"
+    ],
+    "outDir": "dist",
+    "strict": true,
+    "target": "ES6",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "stripInternal": true,
+    "declaration": true,
+  }
+}
