@@ -178,7 +178,12 @@ export class Renderer extends EventEmitter {
   /**
    * @param clientUser lazy loadable client user
    */
-  constructor(private clientUser: () => User | undefined) {
+  constructor(
+    /**
+     * @external
+     */
+    private clientUser: () => User | undefined
+  ) {
     super();
     this.on(
       "messageReactionAdd",

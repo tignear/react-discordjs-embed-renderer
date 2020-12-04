@@ -1,0 +1,7 @@
+[
+
+  {
+    "pattern": "^src/",
+    "replace": "https://github.com/tignear/react-discordjs-embed-renderer/tree/main/src"
+  }
+]
