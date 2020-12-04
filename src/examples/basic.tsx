@@ -39,8 +39,7 @@ class Resource {
   loaded = false;
 }
 async function ready() {
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const renderer = new Renderer(() => client.user!);
+  const renderer = new Renderer(() => client.user);
   const forward = forwardEvent(client, renderer);
   Renderer.requiredEvents.forEach(forward);
   const resouce = new Resource();

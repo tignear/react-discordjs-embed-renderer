@@ -182,7 +182,7 @@ export class Renderer extends EventEmitter {
     /**
      * @external
      */
-    private clientUser: () => User | undefined
+    private clientUser: () => User | undefined | null
   ) {
     super();
     this.on(
