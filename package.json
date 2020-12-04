@@ -1,6 +1,6 @@
 {
   "name": "@tignear/react-discordjs-embed-renderer",
-  "version": "1.0.0-rc3",
+  "version": "1.0.0-rc4",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
