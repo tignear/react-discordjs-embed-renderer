@@ -9,7 +9,6 @@
     "target": "ES6",
     "moduleResolution": "node",
     "module": "commonjs",
-    "stripInternal": true,
     "declaration": true,
   }
 }
