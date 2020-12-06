@@ -69,6 +69,10 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -97,8 +101,16 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="instances.renderingmessageinstance.html#messagebody" class="tsd-kind-icon">message<wbr>Body</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="instances.renderingmessageinstance.html#messagegetter" class="tsd-kind-icon">message<wbr>Getter</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="instances.renderingmessageinstance.html#onrenderingdone" class="tsd-kind-icon">on<wbr>Rendering<wbr>Done</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="instances.renderingmessageinstance.html#reactions" class="tsd-kind-icon">reactions</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="instances.renderingmessageinstance.html#type" class="tsd-kind-icon">type</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="instances.renderingmessageinstance.html#message" class="tsd-kind-icon">message</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-external">
@@ -117,17 +129,37 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Rendering<wbr>Message<wbr>Instance<span class="tsd-signature-symbol">(</span>messageBody<span class="tsd-signature-symbol">?: </span><a href="../modules/instances.html#messagebodytype" class="tsd-signature-type">MessageBodyType</a>, reactions<span class="tsd-signature-symbol">?: </span><a href="instances.reactionsinstance.html" class="tsd-signature-type">ReactionsInstance</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="instances.renderingmessageinstance.html" class="tsd-signature-type">RenderingMessageInstance</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Rendering<wbr>Message<wbr>Instance<span class="tsd-signature-symbol">(</span>messageGetter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Message</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span>, onRenderingDone<span class="tsd-signature-symbol">: </span><a href="../modules/react_discordjs_embed_renderer.html#renderingdonehandler" class="tsd-signature-type">RenderingDoneHandler</a>, messageBody<span class="tsd-signature-symbol">?: </span><a href="../modules/instances.html#messagebodytype" class="tsd-signature-type">MessageBodyType</a>, reactions<span class="tsd-signature-symbol">?: </span><a href="instances.reactionsinstance.html" class="tsd-signature-type">ReactionsInstance</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="instances.renderingmessageinstance.html" class="tsd-signature-type">RenderingMessageInstance</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tignear/react-discordjs-embed-renderer/tree/main/srcinstances/message.ts#L14">src/instances/message.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/tignear/react-discordjs-embed-renderer/tree/main/srcinstances/message.ts#L19">src/instances/message.ts:19</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
+								<li>
+									<h5>messageGetter: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Message</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-signature">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Message</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Message</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5>onRenderingDone: <a href="../modules/react_discordjs_embed_renderer.html#renderingdonehandler" class="tsd-signature-type">RenderingDoneHandler</a></h5>
+								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> messageBody: <a href="../modules/instances.html#messagebodytype" class="tsd-signature-type">MessageBodyType</a><span class="tsd-signature-symbol"> = {}</span></h5>
 								</li>
@@ -148,7 +180,42 @@
 					<div class="tsd-signature tsd-kind-icon">message<wbr>Body<span class="tsd-signature-symbol">:</span> <a href="../modules/instances.html#messagebodytype" class="tsd-signature-type">MessageBodyType</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tignear/react-discordjs-embed-renderer/tree/main/srcinstances/message.ts#L16">src/instances/message.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/tignear/react-discordjs-embed-renderer/tree/main/srcinstances/message.ts#L26">src/instances/message.ts:26</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a name="messagegetter" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> message<wbr>Getter</h3>
+					<div class="tsd-signature tsd-kind-icon">message<wbr>Getter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Message</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tignear/react-discordjs-embed-renderer/tree/main/srcinstances/message.ts#L24">src/instances/message.ts:24</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-class">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Message</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Message</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="onrenderingdone" class="tsd-anchor"></a>
+					<h3>on<wbr>Rendering<wbr>Done</h3>
+					<div class="tsd-signature tsd-kind-icon">on<wbr>Rendering<wbr>Done<span class="tsd-signature-symbol">:</span> <a href="../modules/react_discordjs_embed_renderer.html#renderingdonehandler" class="tsd-signature-type">RenderingDoneHandler</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tignear/react-discordjs-embed-renderer/tree/main/srcinstances/message.ts#L25">src/instances/message.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -158,7 +225,7 @@
 					<div class="tsd-signature tsd-kind-icon">reactions<span class="tsd-signature-symbol">:</span> <a href="instances.reactionsinstance.html" class="tsd-signature-type">ReactionsInstance</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tignear/react-discordjs-embed-renderer/tree/main/srcinstances/message.ts#L17">src/instances/message.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/tignear/react-discordjs-embed-renderer/tree/main/srcinstances/message.ts#L27">src/instances/message.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -169,9 +236,33 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/instances.instancebase.html">InstanceBase</a>.<a href="../interfaces/instances.instancebase.html#type">type</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/tignear/react-discordjs-embed-renderer/tree/main/srcinstances/message.ts#L22">src/instances/message.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/tignear/react-discordjs-embed-renderer/tree/main/srcinstances/message.ts#L41">src/instances/message.ts:41</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="message" class="tsd-anchor"></a>
+					<h3>message</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> message<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Message</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/tignear/react-discordjs-embed-renderer/tree/main/srcinstances/message.ts#L67">src/instances/message.ts:67</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Message</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
@@ -187,13 +278,17 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/instances.instancebase.html">InstanceBase</a>.<a href="../interfaces/instances.instancebase.html#appendchild">appendChild</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/tignear/react-discordjs-embed-renderer/tree/main/srcinstances/message.ts#L23">src/instances/message.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/tignear/react-discordjs-embed-renderer/tree/main/srcinstances/message.ts#L46">src/instances/message.ts:46</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>child: <a href="../modules/instances.html#instance" class="tsd-signature-type">Instance</a><span class="tsd-signature-symbol"> | </span><a href="../modules/instances.html#textinstance" class="tsd-signature-type">TextInstance</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -211,9 +306,11 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/instances.instancebase.html">InstanceBase</a>.<a href="../interfaces/instances.instancebase.html#cloneself">cloneSelf</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/tignear/react-discordjs-embed-renderer/tree/main/srcinstances/message.ts#L19">src/instances/message.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/tignear/react-discordjs-embed-renderer/tree/main/srcinstances/message.ts#L32">src/instances/message.ts:32</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
 							<h4 class="tsd-returns-title">Returns <a href="instances.renderingmessageinstance.html" class="tsd-signature-type">RenderingMessageInstance</a></h4>
 						</li>
 					</ul>
@@ -283,11 +380,20 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
 								<a href="instances.renderingmessageinstance.html#messagebody" class="tsd-kind-icon">message<wbr>Body</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+								<a href="instances.renderingmessageinstance.html#messagegetter" class="tsd-kind-icon">message<wbr>Getter</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="instances.renderingmessageinstance.html#onrenderingdone" class="tsd-kind-icon">on<wbr>Rendering<wbr>Done</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
 								<a href="instances.renderingmessageinstance.html#reactions" class="tsd-kind-icon">reactions</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
 								<a href="instances.renderingmessageinstance.html#type" class="tsd-kind-icon">type</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="instances.renderingmessageinstance.html#message" class="tsd-kind-icon">message</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
 								<a href="instances.renderingmessageinstance.html#appendchild" class="tsd-kind-icon">append<wbr>Child</a>
