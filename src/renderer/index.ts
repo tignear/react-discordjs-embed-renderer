@@ -269,6 +269,8 @@ export class Renderer extends EventEmitter {
     once: boolean
   ): Promise<Message> {
     let _ignoreReactionRemoveEvent = false;
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const self = this;
     const containerInfo: Container = {
       channel,
       get ignoreReactionRemoveEvent() {
@@ -285,18 +287,34 @@ export class Renderer extends EventEmitter {
           new RenderError("An error ocurred while rendering.", { message }, err)
         );
       },
+      registerMessage(message) {
+        if (!once) {
+          self.containers.set(message.id, this);
+        }
+      },
     };
     const fiberRoot = reconciler.createContainer(containerInfo, true, false);
     return new Promise((resolve) => {
       reconciler.updateContainer(what, fiberRoot, null, () => {
-        if (!once) {
-          // eslint-disable-next-line @typescript-eslint/no-floating-promises,@typescript-eslint/no-non-null-assertion
-          containerInfo.message!.then((e) =>
-            this.containers.set(e.id, containerInfo)
+        const message = containerInfo.message;
+        if (!message) {
+          this.emit(
+            "error",
+            new RenderError("message send failed.", { message, channel })
           );
+          return;
         }
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        resolve(containerInfo.message!);
+        if (!once) {
+          // eslint-disable-next-line @typescript-eslint/no-floating-promises
+          message.then((e) => this.containers.set(e.id, containerInfo));
+        }
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        message.then((e) =>
+          "onRenderingDone" in containerInfo && containerInfo.onRenderingDone
+            ? containerInfo.onRenderingDone(e)
+            : undefined
+        );
+        resolve(message);
       });
     });
   }

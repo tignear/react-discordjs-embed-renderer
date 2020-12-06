@@ -4,26 +4,25 @@
  * @module renderer
  */
 import { Message } from "discord.js";
+import { isDeepStrictEqual } from "util";
 import {
+  AuthorInstance,
   EmbedInstance,
+  FieldInstance,
   FooterInstance,
   Instance,
+  ReactionInstance,
+  ReactionsInstance,
+  RenderingMessageInstance,
   TitleInstance,
 } from "../instances";
-import { AuthorInstance } from "../instances/author";
 import { CommonImageInstance } from "../instances/commonimage";
-import { FieldInstance } from "../instances/field";
-import { RenderingMessageInstance } from "../instances/message";
-import { ReactionInstance } from "../instances/reaction";
-import { ReactionsInstance } from "../instances/reactions";
-import { AbortController } from "abort-controller";
-import { isDeepStrictEqual } from "util";
 import { ChildSet, Container } from "./reconciler";
-
+import { AbortController } from "abort-controller";
 export const instanceFactory: Record<
   string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (props: Record<string, any>) => Instance
+  (props: Record<string, any>, other: Record<string, any>) => Instance
 > = {
   discordjs_embed: (props) =>
     EmbedInstance.create(props.color, props.timestamp),
@@ -42,7 +41,8 @@ export const instanceFactory: Record<
       props.onReactionRemove,
       props.onReactionRemoveEmoji
     ),
-  discordjs_message: () => new RenderingMessageInstance(),
+  discordjs_message: (props, other) =>
+    new RenderingMessageInstance(other.messageGetter, props.onRenderingDone),
   discordjs_reactions: (props) =>
     new ReactionsInstance(props.strategy, props.onReactionRemoveAll),
 };

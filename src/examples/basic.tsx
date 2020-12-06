@@ -11,6 +11,7 @@ import {
   Reactions,
   Renderer,
   forwardEvent,
+  RenderingMessageInstance,
 } from "../index";
 import * as React from "react";
 import { Client, TextChannel } from "discord.js";
@@ -48,8 +49,12 @@ async function ready() {
     const v = resouce.get();
     return <Title url="https://example.com">{v}</Title>;
   };
+  const ref = React.createRef<RenderingMessageInstance>();
   const message = (
-    <RenderingMessage>
+    <RenderingMessage
+      ref={ref}
+      onRenderingDone={(msg) => console.log("RenderingDone", msg.id)}
+    >
       テスト
       <Embed color={0xff0000} timestamp={true}>
         <React.Suspense fallback={<Title>にゃーん</Title>}>
@@ -77,9 +82,10 @@ async function ready() {
         onReactionRemoveAll={(...rest) => console.log("onReactionRemoveAll")}
       >
         <Reaction
-          onReactionAdd={(...rest) =>
-            console.log("onReactionAdd", rest[0].emoji.name)
-          }
+          onReactionAdd={(...rest) => {
+            console.log("onReactionAdd", rest[0].emoji.name);
+            console.log(ref.current?.message?.id);
+          }}
           onReactionRemove={(...rest) =>
             console.log("onReactionRemove", rest[0].emoji.name)
           }

@@ -13,8 +13,12 @@ import {
   MessageReaction,
   MessageEmbed,
 } from "discord.js";
-import ReactReconciler = require("react-reconciler");
-import { TimestampType, ReactionRemoveAllHandler } from "../elements";
+import ReactReconciler from "react-reconciler";
+import {
+  TimestampType,
+  ReactionRemoveAllHandler,
+  RenderingDoneHandler,
+} from "../elements";
 import {
   EmbedInstance,
   ReactionInstance,
@@ -23,7 +27,7 @@ import {
   TextInstance,
 } from "../instances";
 import { instanceFactory, reactionUpdateSterategyFactory } from "./factory";
-
+import { AbortController } from "abort-controller";
 type HostConfig<
   Type,
   Props,
@@ -69,6 +73,8 @@ export type Container = {
   onReactionRemoveAll?: ReactionRemoveAllHandler;
   ignoreReactionRemoveEvent: boolean;
   errorHandler: (err: unknown) => void;
+  registerMessage(message: Message): void;
+  onRenderingDone?: RenderingDoneHandler;
 };
 export type UpdatePayload = never;
 export type TimeoutHandle = NodeJS.Timeout;
@@ -81,6 +87,7 @@ export type ChildSet = {
     content?: string;
   };
   onReactionRemoveAll?: ReactionRemoveAllHandler;
+  onRenderingDone?: RenderingDoneHandler;
   reactions?: ReactionsInstance;
 };
 export type PublicInstance = {};
@@ -141,12 +148,16 @@ export const reconciler = ReactReconciler<
       clearTimeout(handle);
     }
   },
-  createInstance: (type, props) => {
+  createInstance: (type, props, container) => {
     const f = instanceFactory[type];
     if (f == null) {
       throw new TypeError("type is not implemented:" + type);
     }
-    return f(props);
+    try {
+      return f(props, { messageGetter: () => container.curMessage });
+    } catch (e) {
+      console.error(e);
+    }
   },
   createTextInstance: (text) => {
     return text;
@@ -197,6 +208,7 @@ export const reconciler = ReactReconciler<
     if (child.type !== "message") {
       return;
     }
+    childSet.onRenderingDone = child.onRenderingDone;
     childSet.messageBody = child.messageBody;
     childSet.onReactionRemoveAll = child.reactions?.onReactionRemoveAll;
     childSet.reactions = child.reactions;
@@ -240,6 +252,7 @@ export const reconciler = ReactReconciler<
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     container.message.then((message) => {
       container.curMessage = message;
+      container.registerMessage(message);
     });
 
     // processing reactions
@@ -249,5 +262,6 @@ export const reconciler = ReactReconciler<
         newChildren
       );
     }
+    container.onRenderingDone = newChildren.onRenderingDone;
   },
 } as HostConfig<Type, Props, Container, Instance, TextInstance, never, PublicInstance, HostContext, UpdatePayload, ChildSet, TimeoutHandle, NoTimeout>);

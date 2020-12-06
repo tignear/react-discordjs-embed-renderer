@@ -15,5 +15,6 @@ export {
   Thumbnail,
   Title,
 } from "./elements";
+export { RenderingMessageInstance } from "./instances";
 export { Renderer } from "./renderer";
 export { forwardEvent } from "./util";

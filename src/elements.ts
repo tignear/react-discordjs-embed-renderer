@@ -11,6 +11,7 @@ import {
   User,
 } from "discord.js";
 import * as React from "react";
+import { RenderingMessageInstance } from "./instances";
 export type TimestampType = number | Date | boolean | undefined;
 export type ReactionAddHandler = (
   reaction: MessageReaction,
@@ -26,6 +27,7 @@ export type ReactionRemoveEmojiHandler = (
 export type ReactionRemoveAllHandler = (
   message: Message | PartialMessage
 ) => boolean | void | Promise<boolean | void>;
+export type RenderingDoneHandler = (message: Message) => void;
 /**
  * @external
  * @param elementName
@@ -37,9 +39,10 @@ function element<T>(elementName: string): React.FC<T> {
  * This is root for library.
  * @category Elements
  */
-export const RenderingMessage: React.FC<RenderingMessageProps> = element(
-  "discordjs_message"
-);
+export const RenderingMessage = React.forwardRef<
+  RenderingMessageInstance,
+  RenderingMessageProps
+>((props, ref) => React.createElement("discordjs_message", { ...props, ref }));
 /**
  * Property of {@link RenderingMessage}.
  * @category Elements
@@ -52,6 +55,10 @@ interface RenderingMessageProps {
    * - {@link Reactions}
    */
   children: React.ReactNode;
+  /**
+   * Is called when done send message.
+   */
+  onRenderingDone?: RenderingDoneHandler;
 }
 /**
  * Represents [Discord Api Embed](https://discord.com/developers/docs/resources/channel#embed-object-embed-structure).
