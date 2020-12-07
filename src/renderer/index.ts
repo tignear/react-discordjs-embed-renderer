@@ -22,7 +22,7 @@ import {
 import { reactionUpdateSterategyFactory } from "./factory";
 import { EventEmitter } from "events";
 import { Container, reconciler } from "./reconciler";
-
+import { RenderError } from "./error";
 /**
  * Manage message and component.<br>
  * Must handle the error event(use ``on`` method,``addListener`` method, etc), otherwise process exit suddenly.<br>
