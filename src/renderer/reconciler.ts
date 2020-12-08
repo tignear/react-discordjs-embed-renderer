@@ -28,6 +28,7 @@ import {
 } from "../instances";
 import { instanceFactory, reactionUpdateSterategyFactory } from "./factory";
 import { AbortController } from "abort-controller";
+import { RenderError } from "./error";
 type HostConfig<
   Type,
   Props,
@@ -140,7 +141,11 @@ export const reconciler = ReactReconciler<
   supportsHydration: false,
   supportsPersistence: true,
   appendInitialChild: (parentInstance, child) => {
-    parentInstance.appendChild(child);
+    try {
+      parentInstance.appendChild(child);
+    } catch (e) {
+      console.error(e);
+    }
   },
   cancelDeferredCallback: (handle) => {},
   clearTimeout: (handle) => {
@@ -151,12 +156,14 @@ export const reconciler = ReactReconciler<
   createInstance: (type, props, container) => {
     const f = instanceFactory[type];
     if (f == null) {
-      throw new TypeError("type is not implemented:" + type);
+      container.errorHandler(
+        new RenderError("type is not implemented:" + type, { type, props })
+      );
     }
     try {
       return f(props, { messageGetter: () => container.curMessage });
     } catch (e) {
-      console.error(e);
+      container.errorHandler(e);
     }
   },
   createTextInstance: (text) => {

@@ -4,6 +4,7 @@
  * @module instances
  */
 import { Instance } from ".";
+import { RenderError } from "../renderer/error";
 import { InstanceBase } from "./common";
 import { TextInstance } from "./text";
 
@@ -22,6 +23,9 @@ export class FieldInstance implements InstanceBase<"field", FieldInstance> {
       this.value = child;
       return;
     }
-    throw new TypeError("FieldInstance#appendChild");
+    throw new RenderError("FieldInstance#appendChild", {
+      child,
+      self: this,
+    });
   }
 }

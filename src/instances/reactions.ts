@@ -5,6 +5,7 @@
  */
 import { Instance } from ".";
 import { ReactionRemoveAllHandler } from "../elements";
+import { RenderError } from "../renderer/error";
 import { InstanceBase } from "./common";
 import { ReactionInstance } from "./reaction";
 
@@ -30,6 +31,9 @@ export class ReactionsInstance
       this.reactions.push(child);
       return;
     }
-    throw new TypeError();
+    throw new RenderError("ReactionsInstance#appendChild", {
+      child,
+      self: this,
+    });
   }
 }

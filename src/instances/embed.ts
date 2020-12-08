@@ -9,6 +9,7 @@ import { InstanceBase } from "./common";
 import { TextInstance } from "./text";
 import { TimestampType } from "../elements";
 import { isDeepStrictEqual } from "util";
+import { RenderError } from "../renderer/error";
 
 export class EmbedInstance implements InstanceBase<"embed", EmbedInstance> {
   type: "embed" = "embed";
@@ -24,7 +25,10 @@ export class EmbedInstance implements InstanceBase<"embed", EmbedInstance> {
   ) {}
   appendChild(child: TextInstance | Instance | null): void {
     if (child == null) {
-      throw new TypeError("EmbedInstance#appendChild: child must not be null");
+      throw new RenderError(
+        "EmbedInstance#appendChild: child must not be null",
+        { child, self: this }
+      );
     }
     if (typeof child === "string") {
       this.body.description = child;
@@ -65,7 +69,10 @@ export class EmbedInstance implements InstanceBase<"embed", EmbedInstance> {
         };
         return;
       default:
-        throw new TypeError("EmbedInstance#appendChild");
+        throw new RenderError("EmbedInstance#appendChild", {
+          child,
+          self: this,
+        });
     }
   }
   cloneSelf(): EmbedInstance {

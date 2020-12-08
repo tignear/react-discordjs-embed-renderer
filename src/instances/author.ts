@@ -5,6 +5,7 @@
  */
 import { Instance } from "./index";
 import { InstanceBase } from "./common";
+import { RenderError } from "../renderer/error";
 export class AuthorInstance implements InstanceBase<"author", AuthorInstance> {
   icon?: string;
   url?: string;
@@ -21,6 +22,6 @@ export class AuthorInstance implements InstanceBase<"author", AuthorInstance> {
       this.value = child;
       return;
     }
-    throw new TypeError("AuthorInstance#appendChild");
+    throw new RenderError("AuthorInstance#appendChild", { self: this, child });
   }
 }

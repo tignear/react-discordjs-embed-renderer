@@ -11,6 +11,7 @@ import {
   ReactionRemoveEmojiHandler,
   ReactionRemoveHandler,
 } from "../elements";
+import { RenderError } from "../renderer/error";
 
 export class ReactionInstance
   implements InstanceBase<"reaction", ReactionInstance> {
@@ -33,6 +34,9 @@ export class ReactionInstance
       this.emoji = child;
       return;
     }
-    throw new TypeError();
+    throw new RenderError("ReactionInstance#appendChild", {
+      child,
+      self: this,
+    });
   }
 }

@@ -4,6 +4,7 @@
  * @module instances
  */
 import { Instance, TextInstance } from ".";
+import { RenderError } from "../renderer/error";
 import { InstanceBase } from "./common";
 
 export class FooterInstance implements InstanceBase<"footer", FooterInstance> {
@@ -18,6 +19,6 @@ export class FooterInstance implements InstanceBase<"footer", FooterInstance> {
       this.value = child;
       return;
     }
-    throw new TypeError("FooterInstance#appendChild");
+    throw new RenderError("FooterInstance#appendChild", { child, self: this });
   }
 }
